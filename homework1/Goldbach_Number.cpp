@@ -1,18 +1,14 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <memory.h>
 using namespace std;
-bool JudgePrime(bool *isPrime, int n)                   //ÅĞ¶ÏÊÇ·ñÎªÖÊÊı
-{
-	return isPrime[n];
-}
 int main()
 {
 	int inNumber;
 	cin >> inNumber;
-	int length = 2 * inNumber;                          //µÚN¸ö¸çµÂ°ÍºÕÊı²»»á³¬¹ı2N
+	int length = 2 * inNumber;                          //ç¬¬Nä¸ªå“¥å¾·å·´èµ«æ•°ä¸ä¼šè¶…è¿‡2N
 	bool *isPrime = new bool[length + 1];
-	memset(isPrime, true, length + 1);                  //³õÊ¼»¯Îªtrue
-	for (int i = 2; i <= inNumber + 1; i++)             //É¸·¨É¸Ñ¡ÖÊÊı
+	memset(isPrime, true, length + 1);                  //åˆå§‹åŒ–ä¸ºtrue
+	for (int i = 2; i <= inNumber + 1; i++)             //ç­›æ³•ç­›é€‰è´¨æ•°
 		if (isPrime[i])
 			for (int j = 2; i*j <= length; j++)
 			{
@@ -21,18 +17,18 @@ int main()
 					isPrime[i*j] = false;
 				}
 			}
-	int GoldbachNumber = 2;                             //¸çµÂ°ÍºÕÊı¸öÊı
+	int GoldbachNumber = 2;                             //å“¥å¾·å·´èµ«æ•°ä¸ªæ•°
 	if (inNumber == 1)
 		cout << 4;
 	if (inNumber == 2)
 		cout << 5;
 	int n;
 	bool prime;
-	for (n = 7; GoldbachNumber < inNumber; n += 2)      //Å¼Êı±Ø¶¨·ûºÏÒªÇó
+	for (n = 7; GoldbachNumber < inNumber; n += 2)      //å¶æ•°å¿…å®šç¬¦åˆè¦æ±‚
 	{
 		prime = false;
 		GoldbachNumber++;
-		if (JudgePrime(isPrime, n - 2))                 //ÈôÆæÊı·ûºÏÒªÇó£¬·Ö½âÖ®ºó±ØÎª2ºÍÁíÒ»¸öÆæÊı
+		if (isPrime[n - 2])                             //è‹¥å¥‡æ•°ç¬¦åˆè¦æ±‚ï¼Œåˆ†è§£ä¹‹åå¿…ä¸º2å’Œå¦ä¸€ä¸ªå¥‡æ•°
 		{
 			GoldbachNumber++;
 			prime = true;
