@@ -1,26 +1,26 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <list>
 using namespace std;
 int main()
 {
-	int total_num;                     //×ÜÈËÊı
-	int circle_num;                    //Î§³ÉÈ¦µÄÈËÊı
-	int start_num;                     //´Ó1¿ªÊ¼±¨ÊıµÄÈËµÄ±àºÅ
-	int count_num;                     //Êıµ½µÄµÚcount_num¸öÈË
-	int i, number;                     //number¼ÇÂ¼Î´ÈëÈ¦µÄÈËÖĞµÄ×îĞ¡±êºÅ
+	int total_num;                     //æ€»äººæ•°
+	int circle_num;                    //å›´æˆåœˆçš„äººæ•°
+	int start_num;                     //ä»1å¼€å§‹æŠ¥æ•°çš„äººçš„ç¼–å·
+	int count_num;                     //æ•°åˆ°çš„ç¬¬count_numä¸ªäºº
+	int i, number;                     //numberè®°å½•æœªå…¥åœˆçš„äººä¸­çš„æœ€å°æ ‡å·
 	cin >> total_num >> circle_num >> start_num >> count_num;
 	list<int> circle;
 	list<int>::iterator iter;
-	//¸øÈ¦ÖĞµÄÈË±àºÅ
+	//ç»™åœˆä¸­çš„äººç¼–å·
 	for (i = 1; i <= circle_num; i++)
 		circle.push_back(i);
-	number = circle_num;               //ÒÑÈëÈ¦µÄ×î´ó±àºÅ
-	//¶¨Î»µ½µÚstart_num¸ö±¨ÊıµÄÈË£¬start_num<circle_num
+	number = circle_num;               //å·²å…¥åœˆçš„æœ€å¤§ç¼–å·
+	//å®šä½åˆ°ç¬¬start_numä¸ªæŠ¥æ•°çš„äººï¼Œstart_num<circle_num
 	for (i = 1, iter = circle.begin(); i < start_num; i++)
 	{
 			++iter;
 	}
-	//½«Ê£ÏÂµÄÎ´ÈëÈ¦µÄÈËÈ«²¿ÈëÈ¦
+	//å°†å‰©ä¸‹çš„æœªå…¥åœˆçš„äººå…¨éƒ¨å…¥åœˆ
 	for (i = 1; i <= total_num - circle_num; i++)
 	{
 		for (int j = 1; j <= count_num; j++)
@@ -30,11 +30,11 @@ int main()
 			else
 				++iter;
 		}
-		circle.insert(iter, ++number);  //½«±àºÅ×îĞ¡µÄ²åÈëÈ¦ÖĞ
+		circle.insert(iter, ++number);  //å°†ç¼–å·æœ€å°çš„æ’å…¥åœˆä¸­
 		--iter;
 	}
-	//½»»»¼°³öÁĞ²Ù×÷
-	for (; total_num > 1; --total_num)  //Ö»Ê£Ò»¸öÈËÊ±Í£Ö¹
+	//äº¤æ¢åŠå‡ºåˆ—æ“ä½œ
+	for (; total_num > 1; --total_num)  //åªå‰©ä¸€ä¸ªäººæ—¶åœæ­¢
 	{
 		for (i = 1; i < count_num; i++)
 		{
@@ -43,14 +43,14 @@ int main()
 			else
 				++iter;
 		}
-		if (iter == circle.begin())     //ÌØÊâÇé¿ö£¬±¨µ½count_numµÄ¸ÕºÃÊÇµÚÒ»¸öÈË£¬µÈÍ¬ÓÚÁî×îºóÒ»¸öÈË³öÁĞ
+		if (iter == circle.begin())     //ç‰¹æ®Šæƒ…å†µï¼ŒæŠ¥åˆ°count_numçš„åˆšå¥½æ˜¯ç¬¬ä¸€ä¸ªäººï¼Œç­‰åŒäºä»¤æœ€åä¸€ä¸ªäººå‡ºåˆ—
 		{
 			circle.erase(--circle.end());
 			iter = ++circle.begin();
 		}
 		else
 		{
-			--iter;                     //Ò»°ãÇé¿ö£¬µÈÍ¬ÓÚÁî±¨ÊıÎªcount_num-1µÄÈË³öÁĞ
+			--iter;                     //ä¸€èˆ¬æƒ…å†µï¼Œç­‰åŒäºä»¤æŠ¥æ•°ä¸ºcount_num-1çš„äººå‡ºåˆ—
 			iter = circle.erase(iter);
 			if (iter == --circle.end())
 				iter = circle.begin();
