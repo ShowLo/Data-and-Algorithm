@@ -94,5 +94,7 @@ int main()
 	}
 	for (SNode *output = Infix[0].LeftNode; output != NULL; output = output->m_next)
 		cout << output->item;
+	delete[]Node;
+	delete[]Infix;
 	return 0;
 }
