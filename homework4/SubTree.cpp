@@ -45,7 +45,10 @@ flag:
 	//递归调用，建立左子树
 	FormTree(&node->LeftNode, Preorder + 1, Inorder, RootIndex);
 	//改递归为循环，建立右子树
-	result = &node->RightNode; Preorder += RootIndex + 1; Inorder += RootIndex + 1; NodeNum -= RootIndex + 1;
+	result = &node->RightNode; 
+	Preorder += RootIndex + 1; 
+	Inorder += RootIndex + 1;
+	NodeNum -= RootIndex + 1;
 	goto flag;                                       //循环
 }
 //判断第一棵树中以node1为根节点的子树是否与第二棵树在形态结构上一致
