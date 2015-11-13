@@ -119,41 +119,39 @@ int main()
 			}
 		}
 
-		if (path[times].vertex - 1 >= 0)
-			if (path[times].vertex % N != 0)             //不在迷宫最左一列
+		if (path[times].vertex % N != 0)             //不在迷宫最左一列
+		{
+			if (grid[path[times].vertex - 1] != 0 && !visited[path[times].vertex - 1])
 			{
-				if (grid[path[times].vertex - 1] != 0 && !visited[path[times].vertex - 1])
+				if (path[times].vertex - 1 == end)
 				{
-					if (path[times].vertex - 1 == end)
-					{
-						cout << path[times].weight;
-						return 0;
-					}
-					visited[path[times].vertex - 1] = true;
-					Maze[path[times].vertex - 1].vertex = path[times].vertex - 1;
-					Maze[path[times].vertex - 1].weight = path[times].weight + RealWeight(grid[path[times].vertex - 1]);
-					path.push_back(Maze[path[times].vertex - 1]);
-					push_heap(path.begin() + times + 1, path.end(), compare);
+					cout << path[times].weight;
+					return 0;
 				}
+				visited[path[times].vertex - 1] = true;
+				Maze[path[times].vertex - 1].vertex = path[times].vertex - 1;
+				Maze[path[times].vertex - 1].weight = path[times].weight + RealWeight(grid[path[times].vertex - 1]);
+				path.push_back(Maze[path[times].vertex - 1]);
+				push_heap(path.begin() + times + 1, path.end(), compare);
 			}
+		}
 
-		if (path[times].vertex + 1 < size)
-			if ((path[times].vertex + 1) % N != 0)       //不在迷宫最右一列
+		if ((path[times].vertex + 1) % N != 0)       //不在迷宫最右一列
+		{
+			if (grid[path[times].vertex + 1] != 0 && !visited[path[times].vertex + 1])
 			{
-				if (grid[path[times].vertex + 1] != 0 && !visited[path[times].vertex + 1])
+				if (path[times].vertex + 1 == end)
 				{
-					if (path[times].vertex + 1 == end)
-					{
-						cout << path[times].weight;
-						return 0;
-					}
-					visited[path[times].vertex + 1] = true;
-					Maze[path[times].vertex + 1].vertex = path[times].vertex + 1;
-					Maze[path[times].vertex + 1].weight = path[times].weight + RealWeight(grid[path[times].vertex + 1]);
-					path.push_back(Maze[path[times].vertex + 1]);
-					push_heap(path.begin() + times + 1, path.end(), compare);
+					cout << path[times].weight;
+					return 0;
 				}
+				visited[path[times].vertex + 1] = true;
+				Maze[path[times].vertex + 1].vertex = path[times].vertex + 1;
+				Maze[path[times].vertex + 1].weight = path[times].weight + RealWeight(grid[path[times].vertex + 1]);
+				path.push_back(Maze[path[times].vertex + 1]);
+				push_heap(path.begin() + times + 1, path.end(), compare);
 			}
+		}
 
 		++times;                                         //访问的点数加1
 	}
