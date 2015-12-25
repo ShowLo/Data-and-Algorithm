@@ -1,11 +1,11 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <stdio.h>
 #include <cmath>
 #define N (1E200)
 #define M (1E-50)
 #define Y (1E100)
 using namespace std;
-//Çó×î´óÖµ
+//æ±‚æœ€å¤§å€¼
 double maxNum(double a, double b, double c)
 {
 	if (a >= b&&a >= c)
@@ -23,7 +23,7 @@ int main()
 	double x1, x2;
 	cin >> a >> b >> c;
 
-	if (fabs(a) < M || fabs(c) < M || fabs(b) < M)        //·ÀÖ¹ÏÂÒç£¬³ËÒÔÒ»¸ö³£Êý
+	if (fabs(a) < M || fabs(c) < M || fabs(b) < M)        //é˜²æ­¢ä¸‹æº¢ï¼Œä¹˜ä»¥ä¸€ä¸ªå¸¸æ•°
 	{
 		a = a * N;
 		b = b * N;
@@ -31,15 +31,15 @@ int main()
 	}
 	if ((fabs(a) > Y && fabs(c) > Y) || fabs(b) > Y)
 	{
-		double max = maxNum(a, b, c);                     //¶¼³ýÒÔ×î´óÖµ
+		double max = maxNum(a, b, c);                     //éƒ½é™¤ä»¥æœ€å¤§å€¼
 		a = a / max;
 		b = b / max;
 		c = c / max;
 	}
-	double delta = b * b - 4 * a * c;                     //deltaÅÐ±ðÊ½
-	if (delta < 0)                                        //ÎÞ¸ù
+	double delta = b * b - 4 * a * c;                     //deltaåˆ¤åˆ«å¼
+	if (delta < 0)                                        //æ— æ ¹
 		cout << 0 << endl << 0 << endl;
-	else if (delta == 0)                                  //ÓÐÖØ¸ù
+	else if (delta == 0)                                  //æœ‰é‡æ ¹
 	{
 		if (c == 0)
 			cout << 0 << endl << 0 << endl;
@@ -57,12 +57,12 @@ int main()
 			printf("%.16e\n", x1);
 		}
 	}
-	else                                              //ÓÐÁ½¸ù
+	else                                              //æœ‰ä¸¤æ ¹
 	{
 		double differ1, differ2;
 		differ1 = -b + sqrt(delta);
 		differ2 = -b - sqrt(delta);
-		//¸ù¾ÝÊý¾ÝÊÊµ±Ê¹ÓÃ²»Í¬ÐÎÊ½µÄÇó¸ù¹«Ê½
+		//æ ¹æ®æ•°æ®é€‚å½“ä½¿ç”¨ä¸åŒå½¢å¼çš„æ±‚æ ¹å…¬å¼
 		if (fabs(differ1) < 1)
 			x1 = 2 * c / differ2;
 		else
